@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard de análise de entradas e saídas do estoque Stoki.">
+  <title>Dashboard | Stoki</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="dashboard.html" aria-label="Dashboard Stoki">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4.5 7.3 12 3l7.5 4.3v9.4L12 21l-7.5-4.3V7.3Z"/>
+            <path d="m4.8 7.5 7.2 4.2 7.2-4.2M12 11.7V21"/>
+          </svg>
+        </span>
+        <span class="brand-name">Stoki</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <p class="nav-section-label">Principal</p>
+        <a class="nav-item active" href="dashboard.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+          </svg>
+          <span>Visão geral</span>
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4.5 7.3 12 3l7.5 4.3v9.4L12 21l-7.5-4.3V7.3Z"/><path d="m4.8 7.5 7.2 4.2 7.2-4.2M12 11.7V21"/>
+          </svg>
+          <span>Produtos</span>
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M7 7h11l3 5v7a2 2 0 0 1-2 2H7V7Z"/><path d="M7 10H3v9a2 2 0 0 0 2 2h2M10 16h.01M17 16h.01"/>
+          </svg>
+          <span>Movimentações</span>
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Clientes</span>
+        </a>
+
+        <p class="nav-section-label">Gestão</p>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>
+          </svg>
+          <span>Relatórios</span>
+        </a>
+        <a class="nav-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15.5 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.14.36.36.7.6 1 .3.35.7.56 1.1.6H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z"/>
+          </svg>
+          <span>Configurações</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-support">
+        <span class="support-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.8 1.75c-.9.65-1.6 1.1-1.6 2.25M12 17h.01"/></svg>
+        </span>
+        <div>
+          <strong>Precisa de ajuda?</strong>
+          <a href="#">Falar com o suporte</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="topbar">
+        <div>
+          <p class="page-kicker">Painel de controle</p>
+          <h1>Visão geral do estoque</h1>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search-box" for="dashboardSearch">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="dashboardSearch" type="search" placeholder="Buscar no estoque">
+          </label>
+          <button class="notification-button" type="button" aria-label="Notificações">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+            <span aria-hidden="true"></span>
+          </button>
+          <button class="profile-button" type="button" aria-label="Abrir menu do perfil">
+            <span class="profile-avatar">MS</span>
+            <span class="profile-copy"><strong>Marina Silva</strong><small>Administradora</small></span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="dashboard-content">
+        <div class="dashboard-toolbar">
+          <p id="periodDescription">Dados consolidados dos últimos 30 dias</p>
+          <label class="period-select" for="periodFilter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+            <select id="periodFilter" aria-label="Selecionar período">
+              <option value="7">Últimos 7 dias</option>
+              <option value="30" selected>Últimos 30 dias</option>
+              <option value="90">Últimos 90 dias</option>
+            </select>
+          </label>
+        </div>
+
+        <section class="metrics-grid" aria-label="Indicadores do estoque">
+          <article class="metric-card">
+            <div class="metric-card__header">
+              <span class="metric-icon metric-icon--blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V4m-6 6 6-6 6 6"/></svg>
+              </span>
+              <span class="trend trend--up" id="entriesTrend">+12,4%</span>
+            </div>
+            <p>Entradas no período</p>
+            <strong id="entriesValue">1.284</strong>
+            <small>unidades recebidas</small>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-card__header">
+              <span class="metric-icon metric-icon--orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16m6-6-6 6-6-6"/></svg>
+              </span>
+              <span class="trend trend--up" id="outputsTrend">+8,7%</span>
+            </div>
+            <p>Saídas no período</p>
+            <strong id="outputsValue">946</strong>
+            <small>unidades expedidas</small>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-card__header">
+              <span class="metric-icon metric-icon--green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 7.3 12 3l7.5 4.3v9.4L12 21l-7.5-4.3V7.3Z"/><path d="m4.8 7.5 7.2 4.2 7.2-4.2M12 11.7V21"/></svg>
+              </span>
+              <span class="trend trend--up" id="balanceTrend">+3,2%</span>
+            </div>
+            <p>Saldo do período</p>
+            <strong id="balanceValue">+338</strong>
+            <small>unidades em estoque</small>
+          </article>
+
+          <article class="metric-card metric-card--alert">
+            <div class="metric-card__header">
+              <span class="metric-icon metric-icon--red">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><path d="M10.3 4.2 2.5 18a2 2 0 0 0 1.75 3h15.5a2 2 0 0 0 1.75-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/></svg>
+              </span>
+              <a href="#">Ver itens</a>
+            </div>
+            <p>Estoque baixo</p>
+            <strong id="lowStockValue">18</strong>
+            <small>produtos pedem atenção</small>
+          </article>
+        </section>
+
+        <section class="analytics-grid">
+          <article class="panel flow-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Entradas x saídas</h2>
+                <p>Comparativo de movimentações por período</p>
+              </div>
+              <div class="chart-legend" aria-label="Legenda do gráfico">
+                <span><i class="legend-dot legend-dot--entry"></i>Entradas</span>
+                <span><i class="legend-dot legend-dot--output"></i>Saídas</span>
+              </div>
+            </div>
+            <div class="flow-chart" id="flowChart" aria-label="Gráfico de barras de entradas e saídas"></div>
+          </article>
+
+          <article class="panel clients-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Saídas por cliente</h2>
+                <p>Clientes com maior volume expedido</p>
+              </div>
+              <button class="more-button" type="button" aria-label="Mais opções">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>
+              </button>
+            </div>
+            <div class="clients-chart" id="clientsChart" aria-label="Gráfico comparativo de saídas por cliente"></div>
+          </article>
+        </section>
+
+        <section class="panel movements-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Movimentações recentes</h2>
+              <p>Últimas entradas e saídas registradas</p>
+            </div>
+            <a class="panel-link" href="#">Ver todas
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Produto</th><th>Tipo</th><th>Cliente / fornecedor</th><th>Quantidade</th><th>Data</th><th>Status</th></tr>
+              </thead>
+              <tbody id="movementsTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
